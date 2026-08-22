@@ -1,0 +1,25 @@
+# Python 3.10+ recommended.
+# LIPNet inference (ProtT5 + CNN) runs on GPU; the evaluation/analysis code runs on CPU.
+
+# --- Core scientific stack ---
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+scikit-learn>=1.3
+matplotlib>=3.7
+seaborn>=0.13
+
+# --- Protein language model (LIPNet embeddings) ---
+torch>=2.0
+transformers>=4.30
+sentencepiece>=0.1.99
+
+# --- Bioinformatics / ontology / IO ---
+biopython>=1.81
+obonet>=1.0
+networkx>=3.0
+ijson>=3.2
+requests>=2.31
+
+# --- Sequence descriptors (physico-chemical features) ---
+localcider>=0.1.21

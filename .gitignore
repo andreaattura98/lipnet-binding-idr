@@ -1,0 +1,45 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+venv_*/
+env_*/
+.env
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- OS / editors ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/
+
+# ---- Model weights (download separately — see docs/PIPELINE.md) ----
+*.pth
+*.pt
+*.h5
+*.ckpt
+prot_t5_xl_uniref50/
+models/
+
+# ---- Large / regenerable data (see data/README.md) ----
+data/raw/
+data/processed/
+*.pdb
+*.parquet
+*.pkl
+*.npy
+data/**/*.csv
+
+# ...but keep the small reference files that are committed on purpose
+!data/references/
+!data/references/*.fasta
