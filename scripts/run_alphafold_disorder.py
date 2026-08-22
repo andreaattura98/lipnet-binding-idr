@@ -12,10 +12,10 @@ Flusso:
     (mappa ACC->DP-ID letta da filtered_proteins_lipnet.json) e salva alphafold.caid
     nella stessa cartella.
 
-Vincoli WSL/ambiente (pre-esistenti, cross-progetto):
- - WSL distro: Ubuntu
- - python env conda: /home/andre/miniforge3/envs/env_afdisorder/bin/python
- - mkdssp 3.0.0:    /home/andre/miniforge3/envs/env_afdisorder/bin/mkdssp
+Vincoli WSL/ambiente (configurabili via env var WSL_DISTRO / WSL_PY / WSL_DSSP):
+ - WSL distro con mkdssp 3.x installato (default: Ubuntu)
+ - python env conda con biopython/numpy/pandas
+ - mkdssp 3.0.0
 
 CLI:
     python AF_disorder.py                 # tutti i default
