@@ -33,6 +33,11 @@ binding residues better than a structure-derived signal (AlphaFold-binding)?** �
 The two kernel sizes mirror the two length populations of *linear interacting
 peptides* (LIPs): ordered (~9 aa) and disordered (~19 aa).
 
+<p align="center">
+  <img src="docs/figures/lipnet_architecture.png" width="620" alt="LIPNet architecture">
+</p>
+<p align="center"><em>LIPNet architecture: a pointwise block reduces the 1024-d ProtT5 embedding to 512, two parallel depthwise branches (kernels 9 and 19) capture local sequence patterns, and a final pointwise convolution yields one score per residue. (Diagram: Carangelo, LIPNet.)</em></p>
+
 ## Two independent references
 
 - **CAID3 binding-IDR** — the official community benchmark (positives = GO `binding`
@@ -53,6 +58,12 @@ robustness comes from the two references agreeing, not from their absolute value
 | DisProt (322 proteins) | AUC-ROC | **0.563** | 0.511 | DeLong p = 1.6×10⁻⁵³ |
 | DisProt | AUC-PR | **0.448** | 0.414 | |
 
+<p align="center">
+  <img src="docs/figures/roc_caid3.png" width="42%" alt="ROC — CAID3">
+  <img src="docs/figures/roc_disprot.png" width="42%" alt="ROC — DisProt">
+</p>
+<p align="center"><em>ROC curves on the CAID3 (left) and DisProt (right) references. LIPNet (blue) stays above the diagonal where AlphaFold-binding (orange) collapses to chance on CAID3.</em></p>
+
 - LIPNet **ranks disordered binding residues significantly better** than
   AlphaFold-binding, consistently across both references. Absolute values stay modest
   — the binding-IDR task is genuinely hard and still open.
@@ -61,6 +72,11 @@ robustness comes from the two references agreeing, not from their absolute value
   ordered/helical than the mostly coil reference — the compositional fingerprint of
   coupled folding-and-binding. That same tendency is also its bias: it under-recovers
   the most disordered, coil-like binding regions.
+
+<p align="center">
+  <img src="docs/figures/cider_lipnet.png" width="720" alt="Sequence composition of LIPNet predictions">
+</p>
+<p align="center"><em>Sequence composition (localCIDER). LIPNet's true positives are enriched in order-promoting residues vs the reference (left) and in aromatic residues vs its own false positives (right) — the compositional fingerprint of binding-competent regions.</em></p>
 - AlphaFold-binding's predictions (especially its false positives) depart from real
   binding on several compositional axes at once — a consequence of selecting residues
   on structural exposure rather than sequence.
